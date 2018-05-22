@@ -165,7 +165,8 @@ int escolha;
 		System.err.println("5 - Menu Estatistica");
                 System.err.println("6 - Sair");
 		System.err.println("------------------------------------------------------------------------------------");
-		escolha = teclado.nextInt();
+	
+                escolha = teclado.nextInt();
                 switch(escolha){
                 case 1: {
 			Menu1();
@@ -543,7 +544,7 @@ int escolha;
         
         
     }
-    public static void CriarLivro()
+    public static void CriarLivro() // alterar
     {
         int numero=0;
 			do{
@@ -589,9 +590,280 @@ int escolha;
 			 Menu1();
 		}
     
+        public static void subMenu22()
+                {
+                  int escolha;
+                  System.err.println("------------------------------------------------------------------------------------");
+                  System.err.println("------------------------------   Alterar Livro  -----------------------------------");
+                  System.out.println("");
+                  System.out.println("");
+                  System.out.println("");
+                  System.out.println("");
+                  escolha=teclado.nextInt();
+                  switch(escolha)
+                  {
+                      case 1:
+                      
+                      case 2:
+                  }
+                    
+                    
+                }
+    
+    
+        public static void subMenu23()
+        {
+          System.err.println("------------------------------------------------------------------------------------");
+          System.err.println("------------------------------   Remover Livro  -----------------------------------");  
+        }
+        
+        
+        public static void subMenu24()
+        {
+            System.err.println("------------------------------------------------------------------------------------");
+            System.err.println("------------------------------   Consultar Livro  -----------------------------------");
+        }
+        
+        public static void subMenu25()
+        {
+          int escolha;
+          System.err.println("------------------------------------------------------------------------------------");
+          System.err.println("-------------------------------------- SAIR  -------------------------------------------");  
+           
+         System.out.println("1 - Voltar ao Menu principal");
+         System.out.println("2 - Menu Livros ");
+            escolha=teclado.nextInt();
+        switch (escolha)
+        {
+            case 1: MenuPrincipal();
+                    break;
+            case 2: Menu2();
+                    break;
+            
+            
+            
+        }
+        }
+                
+       public static void Menu3()
+       {
+            int escolha;
+        System.err.println("------------------------------------------------------------------------------------");
+        System.err.println("----------------------------------   Menu Revistas ---------------------------------");
+        System.err.println(" 1 - Inserir Revista");
+        System.err.println(" 2 - Alterar Revista");
+        System.err.println(" 3 - Remover Revista");
+        System.err.println(" 4 - Consultar Revista");
+        System.err.println(" 5 - Menu Anterior");
+        escolha = teclado.nextInt();
+        switch(escolha)
+        {
+            case 1: {
+			subMenu31();
+			break;
+		}
+		case 2: {
+			subMenu32();
+			break;
+		}
+		case 3: {
+			subMenu33();
+		}
+		case 4: {
+			subMenu34();
+		}
+		case 5: {
+			subMenu35();
+		}
+        }
+       }
+       
+    public static void subMenu31()
+    {
+        
+       System.err.println("------------------------------------------------------------------------------------");
+       System.err.println("-----------------------------   Inserir Revista  -----------------------------------");
+       criarRevista();
+        
+        
+        
     }
     
+    public static void criarRevista() // alterar arrays
+    {
+         int numero=0;
+			do{
+
+				
+				String temporarioArray[][] = new String[revistas.length+1][2];
+
+			
+				for(int i=0; i<revistas.length;i++) 
+				{
+					temporarioArray[i][0]=revistas[i][0];
+					temporarioArray[i][1]=revistas[i][1];
+                                        
+                                        
+				}
+
+				System.out.println("Insira o nome do utilizador no formato (Apelido, Nome Próprio)");
+				temporarioArray[temporarioArray.length-1][0]= teclado.next();
+				
+                                System.out.println("Insira o número de Aluno");
+				 temporarioArray[temporarioArray.length-1][1]= teclado.next();
+                            
+                                
+				
+				revistas=temporarioArray;
+				
+
+
+				do{
+					System.out.println("Prima 1 para inserir uma novo utilizador ou 0 para voltar.");
+					numero=teclado.nextInt();
+					
+					if(numero!=0 &&numero!=1){
+						System.out.println("Apenas pode inserir 0 ou 1");
+						numero=2;
+					}
+
+				}while(numero==2);
+				
+
+			}while(numero!=0);
+			 GuardaArrayParaFicheiro(Ficheiro_revistas,revistas);
+			 Menu3();
+		
+    
     }
+    
+    
+    
+    public static void subMenu32()
+    {
+       System.err.println("------------------------------------------------------------------------------------");
+       System.err.println("-----------------------------   Alterar Revista  -----------------------------------"); 
+    }
+    
+    
+    public static void subMenu33()
+    {
+        System.err.println("------------------------------------------------------------------------------------");
+        System.err.println("------------------------------   Remover Revista  -----------------------------------"); 
+    }
+    
+    public static void subMenu34()
+    {
+        System.err.println("------------------------------------------------------------------------------------");
+       System.err.println("----------------------------   Consultar Revista  -----------------------------------"); 
+    }
+    
+    public static void subMenu35()
+    {
+       int escolha;
+        System.err.println("------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------- SAIR ---------------------------------------------");  
+        System.out.println("1 - Voltar ao Menu principal");
+        System.out.println("2 - Menu Revistas ");
+        escolha=teclado.nextInt();
+        switch (escolha)
+        {
+            case 1: MenuPrincipal();
+                    break;
+            case 2: Menu3();
+                    break;
+            
+            
+            
+        }
+    
+    
+    
+    
+    
+    }
+     public static void Menu4()
+     {
+        int escolha;
+        System.err.println("------------------------------------------------------------------------------------");
+        System.err.println("----------------------------------   Menu Alugueres ---------------------------------");
+        System.err.println(" 1 - Inserir Aluguer");
+        System.err.println(" 2 - Alterar Aluguer");
+        System.err.println(" 3 - Remover Aluguer");
+        System.err.println(" 4 - Consultar Aluguer");
+        System.err.println(" 5 - Menu Anterior");
+        escolha = teclado.nextInt();
+        switch(escolha)
+        {
+            case 1: {
+			subMenu41();
+			break;
+		}
+		case 2: {
+			subMenu42();
+			break;
+		}
+		case 3: {
+			subMenu43();
+		}
+		case 4: {
+			subMenu44();
+		}
+		case 5: {
+			subMenu45();
+		}
+        } 
+     }
+   public static void subMenu41()
+   {
+     System.err.println("------------------------------------------------------------------------------------");
+     System.err.println("-----------------------------   Inserir Aluguer  -----------------------------------"); 
+       
+       
+   }
+   public static void subMenu42()
+   {
+    System.err.println("------------------------------------------------------------------------------------");
+    System.err.println("------------------------------  Alterar Aluguer  -----------------------------------");    
+   }
+    
+   public static void subMenu43()
+   {
+       System.err.println("------------------------------------------------------------------------------------");
+       System.err.println("------------------------------  Remover Aluguer  -----------------------------------");     
+   }
+   
+   public static void subMenu44()
+   {
+        System.err.println("------------------------------------------------------------------------------------");
+        System.err.println("----------------------------  Consultar Aluguer  -----------------------------------");    
+   }
+   
+   public static void subMenu45()
+   {
+       int escolha;
+        System.err.println("------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------- SAIR ---------------------------------------------");  
+        System.out.println("1 - Voltar ao Menu principal");
+        System.out.println("2 - Menu Alugueres ");
+        escolha=teclado.nextInt();
+        switch (escolha)
+        {
+            case 1: MenuPrincipal();
+                    break;
+            case 2: Menu4();
+                    break;
+            
+            
+            
+        }
+    
+    
+   } 
+   
+}
+    
+
 
 
  
