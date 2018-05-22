@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="934.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutY="31.0" prefHeight="467.0" prefWidth="934.0">
+        <columns>
+          <TableColumn prefWidth="207.0" text="Título" />
+          <TableColumn minWidth="5.0" prefWidth="196.0" text="Autor" />
+            <TableColumn prefWidth="146.0" text="Editora" />
+            <TableColumn prefWidth="165.0" text="Código" />
+            <TableColumn prefWidth="219.0" text="Disponibilidade" />
+        </columns>
+      </TableView>
+      <Text layoutX="379.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Listagem de Livros" wrappingWidth="175.009765625">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="14.0" layoutY="2.0" text="Voltar Atrás" />
+   </children>
+</AnchorPane>
