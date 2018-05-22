@@ -1,4 +1,4 @@
-package djf;
+package dfjdevelopment;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,7 +15,7 @@ public class DFJdevelopment{
     
     
 		static Scanner teclado = new Scanner(System.in);
-		static String sepChar=";";  //Caracter de separação dos campos nos ficheiros de dados
+		static String sepChar=";";  //Caracter de separaÃ§Ã£o dos campos nos ficheiros de dados
 			
 		//variaveis Utilizadores
 		static String user="";
@@ -29,7 +29,7 @@ public class DFJdevelopment{
 	        
 	        static String FILENAME[]=new String[]{"Livros.dab","Revistas.dab","Utilizadores.dab","Alugueres.dab"};
 	        
-	        static String [][] livros= new String [0][4];
+	        static String [][] livros= new String [0][3];
 	        static String [][] revistas= new String [0][4];
 	        static String [][] utilizadores= new String [0][2];
 	        static String [][] alugueres= new String [0][3];
@@ -72,7 +72,7 @@ public class DFJdevelopment{
 							System.out.println("Erro ao tentar criar o ficheiro!");
 						}
 					} catch(IOException e) {
-						System.out.println("Erro na aplicação!");
+						System.out.println("Erro na aplicaÃ§Ã£o!");
 						e.printStackTrace();
 					}
 				
@@ -88,7 +88,7 @@ public class DFJdevelopment{
 					ficheiro.createNewFile(); 
 				}
 			}catch(IOException e) {
-				System.out.println("Ocorreu um erro durante a criação do ficheiro! [DEBUG: "+e.getMessage()+"]");
+				System.out.println("Ocorreu um erro durante a criaÃ§Ã£o do ficheiro! [DEBUG: "+e.getMessage()+"]");
 				System.out.println("Tente de novo!");
 				lerFicheiroUtilizadores();
 			}
@@ -122,6 +122,51 @@ public class DFJdevelopment{
 
 			return utilizadores;
 		}
+            public static String [][] lerFicheiroLivros(){ 
+
+			try{
+				File ficheiro = new File(Ficheiro_livros);
+
+				if (!ficheiro.exists()) {
+					ficheiro.createNewFile(); 
+				}
+			}catch(IOException e) {
+				System.out.println("Ocorreu um erro durante a criaÃ§Ã£o do ficheiro! [DEBUG: "+e.getMessage()+"]");
+				System.out.println("Tente de novo!");
+				lerFicheiroUtilizadores();
+			}
+			try {
+				File file = new File(Ficheiro_livros);
+				Scanner sc1 = new Scanner(file);
+
+				int numLinhas = 0;
+				while(sc1.hasNextLine()) {
+					numLinhas++;
+					sc1.nextLine();
+				}
+				sc1.close();
+
+				sc1 = new Scanner(file);
+
+				livros = new String[numLinhas][3];
+
+				for(int i=0; sc1.hasNextLine(); i++)
+				{
+					String line = sc1.nextLine();
+					livros[i][0] = String.valueOf((line.split(";")[0]));
+					livros[i][1] = String.valueOf((line.split(";")[1]));
+					livros[i][2] = String.valueOf((line.split(";")[2]));
+                                        livros[i][3] = String.valueOf((line.split(";")[3]));
+
+				}
+				sc1.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("Ocorreu um erro durante a leitura do ficheiro! [DEBUG: "+e.getMessage()+"]");
+			}
+
+			return livros;
+		}
+            
 	    public static void GuardaArrayParaFicheiro(String ficheiro, String[][] narray)//Vai Guardar o Array No ficheiro
 		{
 			try {
@@ -140,7 +185,7 @@ public class DFJdevelopment{
 				System.out.println("Ficheiro desconhecido...");
 				e.printStackTrace();
 			} catch (IOException e) {
-				System.out.println("Erro na aplicação!");
+				System.out.println("Erro na aplicaÃ§Ã£o!");
 				e.printStackTrace();
 			}
 		}
@@ -269,10 +314,10 @@ public class DFJdevelopment{
 	                                        
 					}
 
-					System.out.println("Insira o nome do utilizador no formato (Apelido, Nome Próprio)");
+					System.out.println("Insira o nome do utilizador no formato (Apelido, Nome PrÃ³prio)");
 					temporarioArray[temporarioArray.length-1][0]= teclado.next();
 					
-	                                System.out.println("Insira o número de Aluno");
+	                                System.out.println("Insira o nÃºmero de Aluno");
 					 temporarioArray[temporarioArray.length-1][1]= teclado.next();
 					 System.out.println("Insira o contacto de Aluno");
 					 temporarioArray[temporarioArray.length-1][2]= teclado.next();
@@ -307,7 +352,7 @@ public class DFJdevelopment{
 	        System.err.println("------------------------------------------------------------------------------------");
 	        System.err.println("----------------------------- Alterar Registo --------------------------------------");
 	        System.err.println("1 - Alterar nome de utilizador");
-	        System.err.println("2 - Alterar nº de aluno");
+	        System.err.println("2 - Alterar nÂº de aluno");
 	        System.err.println("3 - Alterar contacto aluno");
 	        
 	        
@@ -333,7 +378,7 @@ public class DFJdevelopment{
 			
 			
 				System.out.println("Insira o numero do utilizador para alterar o contacto de aluno");
-				System.out.println("Nome     | Nº de aluno | Contacto");
+				System.out.println("Nome     | NÂº de aluno | Contacto");
 				for (int i = 0; i<utilizadores.length; i++){
 					if(utilizadores[i][0].compareToIgnoreCase("0")!=0)
 						System.out.println(utilizadores[i][0]+ "  | " + utilizadores[i][1]+ "  | " + utilizadores[i][2]);
@@ -367,7 +412,7 @@ public class DFJdevelopment{
 			
 			
 				System.out.println("Insira o nome do utilizador para alterar o numero de aluno");
-				System.out.println("Nome     | Nº de aluno | Contacto");
+				System.out.println("Nome     | NÂº de aluno | Contacto");
 				for (int i = 0; i<utilizadores.length; i++){
 					if(utilizadores[i][0].compareToIgnoreCase("0")!=0)
 						System.out.println(utilizadores[i][0]+ "  | " + utilizadores[i][1]+ "  | " + utilizadores[i][2]);
@@ -397,7 +442,7 @@ public class DFJdevelopment{
 			String alteracaoutilizador;
 			
 				System.out.println("Insira o numero de aluno para alterar o nome");
-				System.out.println("Nome     | Nº de aluno | Contacto");
+				System.out.println("Nome     | NÂº de aluno | Contacto");
 				for (int i = 0; i<utilizadores.length; i++){
 					if(utilizadores[i][0].compareToIgnoreCase("0")!=0)
 						System.out.println(utilizadores[i][0]+ "  | " + utilizadores[i][1]+ "  | " + utilizadores[i][2]);
@@ -446,7 +491,7 @@ public class DFJdevelopment{
 	        String temporarioArray[][]= new String[utilizadores.length-1][2];
 
 
-			System.err.println("Nome | Nº de aluno ");
+			System.err.println("Nome | NÂº de aluno ");
 			for (int i=0;i<utilizadores.length;i++) {
 				if(utilizadores[i][0].compareToIgnoreCase("0")!=0) {
 					System.out.println(utilizadores[i][0]+ "  | " + utilizadores[i][1]+ "  | " + utilizadores[i][2]);
@@ -586,31 +631,38 @@ public class DFJdevelopment{
 				do{
 
 					
-					String temporarioArray[][] = new String[livros.length+1][2];
+					String temporarioArray[][] = new String[livros.length+1][4];
 
 				
 					for(int i=0; i<livros.length;i++) 
 					{
 						temporarioArray[i][0]=livros[i][0];
 						temporarioArray[i][1]=livros[i][1];
+                                                temporarioArray[i][2]=livros[i][2];
+                                                temporarioArray[i][3]=livros[i][3];
 	                                        
 	                                        
 					}
 
-					System.out.println("Insira o nome do utilizador no formato (Apelido, Nome Próprio)");
+					System.out.println("Titulo");
 					temporarioArray[temporarioArray.length-1][0]= teclado.next();
 					
-	                                System.out.println("Insira o número de Aluno");
-					 temporarioArray[temporarioArray.length-1][1]= teclado.next();
-	                            
+	                                System.out.println("Autor");
+					temporarioArray[temporarioArray.length-1][1]= teclado.next();
+                                        
+                                        System.out.println("Editora");
+					temporarioArray[temporarioArray.length-1][2]= teclado.next();
+                                        
+                                        System.out.println("CÃ³digo");
+					temporarioArray[temporarioArray.length-1][3]= teclado.next();
 	                                
 					
-					utilizadores=temporarioArray;
+					livros=temporarioArray;
 					
 
 
 					do{
-						System.out.println("Prima 1 para inserir uma novo utilizador ou 0 para voltar.");
+						System.out.println("Prima 1 para inserir uma novo livro ou 0 para voltar.");
 						numero=teclado.nextInt();
 						
 						if(numero!=0 &&numero!=1){
@@ -622,8 +674,8 @@ public class DFJdevelopment{
 					
 
 				}while(numero!=0);
-				 GuardaArrayParaFicheiro(Ficheiro_utilizadores,utilizadores);
-				 Menu1();
+				 GuardaArrayParaFicheiro(Ficheiro_livros,livros);
+				 Menu2();
 			}
 	    
 	        public static void subMenu22()
@@ -631,34 +683,102 @@ public class DFJdevelopment{
 	                  int escolha;
 	                  System.err.println("------------------------------------------------------------------------------------");
 	                  System.err.println("------------------------------   Alterar Livro  -----------------------------------");
-	                  System.out.println("");
-	                  System.out.println("");
-	                  System.out.println("");
-	                  System.out.println("");
+	                  System.out.println("1 - Alterar Titulo");
+	                  System.out.println("2 - Alterar Autor");
+	                  System.out.println("3 - Alterar Editora");
+	                  System.out.println("4 - Alterar CÃ³digo");
 	                  escolha=teclado.nextInt();
 	                  switch(escolha)
 	                  {
 	                      case 1:
 	                      
 	                      case 2:
+                              
+                              case 3:
+                              
+                              case 4:
 	                  }
 	                    
 	                    
 	                }
 	    
-	    
+                public static void alterarTitulo()
+                {
+                    
+                }
+                
+                public static void alterarAutor()
+                {
+                    
+                }
+                public static void alterarEditora()
+                {
+                    
+                }
+                public static void alterarCodigo()
+                {
+                    
+                }
 	        public static void subMenu23()
 	        {
 	          System.err.println("------------------------------------------------------------------------------------");
 	          System.err.println("------------------------------   Remover Livro  -----------------------------------");  
-	        }
+                  RemoverLivro();
+                }
 	        
-	        
+	       public static void RemoverLivro()
+               {
+                 String livropararemover;
+                 String temporarioArray[][]= new String[livros.length-1][4];
+
+
+			System.out.println("Livros ");
+			for (int i=0;i<livros.length;i++) {
+				if(livros[i][0].compareToIgnoreCase("0")!=0) {
+					System.out.println(livros[i][0]+ "  | " + livros[i][1]+ "  | " + livros[i][2]+ " | "  + livros[i][3] );
+				}
+			}
+			System.out.println("Insira o nome do livro que pretende remover?" );
+			livropararemover=teclado.next();
+			int y=0;
+			for(int x=0;x<livros.length;x++) {
+				if(livros[x][0].equalsIgnoreCase(livropararemover)){
+					continue;
+				}
+			temporarioArray[y][0]=livros[x][0];
+			temporarioArray[y][1]=livros[x][1];
+			temporarioArray[y][2]=livros[x][2];
+			temporarioArray[y][3]=livros[x][3];
+			y++;
+			}
+			livros=temporarioArray;
+			
+			GuardaArrayParaFicheiro(Ficheiro_livros,livros);
+			
+			subMenu13(); 
+	            
+	              
+               }
 	        public static void subMenu24()
 	        {
 	            System.err.println("------------------------------------------------------------------------------------");
 	            System.err.println("------------------------------   Consultar Livro  -----------------------------------");
-	        }
+                    listarLivro();
+                }
+                public static void listarLivro()
+                {
+                  int tamlivros = livros.length;
+
+
+			for(int i=0; i<tamlivros; i++){
+
+				System.out.println(livros[i][0]+ "  : " + livros[i][1]+ "  : " + livros[i][2]+ "  :  " + livros[i][3]);
+
+			}
+			Menu2(); 
+	        
+	          
+                }
 	        
 	        public static void subMenu25()
 	        {
@@ -742,10 +862,10 @@ public class DFJdevelopment{
 	                                        
 					}
 
-					System.out.println("Insira o nome do utilizador no formato (Apelido, Nome Próprio)");
+					System.out.println("Insira o nome do utilizador no formato (Apelido, Nome PrÃ³prio)");
 					temporarioArray[temporarioArray.length-1][0]= teclado.next();
 					
-	                                System.out.println("Insira o número de Aluno");
+	                                System.out.println("Insira o nÃºmero de Aluno");
 					 temporarioArray[temporarioArray.length-1][1]= teclado.next();
 	                            
 	                                
@@ -910,7 +1030,7 @@ public class DFJdevelopment{
 			System.err.println("------------------------------------------------------------------------------------");
 			System.err.println("--------------------------        Menu Sair      -----------------------------------");
 			System.out.println("Deseja sair do programa? ");
-			System.out.println(" 1-Sim \n2-Não");
+			System.out.println(" 1-Sim \n2-NÃ£o");
 
 			escolha = teclado.nextInt();
 			switch(escolha) {
